@@ -1,0 +1,33 @@
+#!/usr/bin/env php
+<?php
+
+use Armezit\CommissionCalculator\Models\Operation;
+use Armezit\CommissionCalculator\Service\CommissionCalculator;
+use Armezit\CommissionCalculator\Service\CsvParser;
+use Armezit\CommissionCalculator\Service\ExchangeRate;
+
+require __DIR__ . '/bootstrap.php';
+
+// fetch currency rates and override base currency
+//$exchangeRates = (new ExchangeRate())->fetch();
+//$config['base_currency'] = $exchangeRates['base'];
+$exchangeRate = new ExchangeRate([
+    'USD' => '1.1497',
+    'JPY' => '129.53',
+]);
+
+// read csv data
+$commissionCalculator = new CommissionCalculator($config);
+foreach ((new CsvParser($config))->execute($csvFilepath) as $record) {
+
+    $operation = new Operation(
+        (new \DateTime())->setTimestamp(strtotime($record['date'])),
+        $record['user_id'],
+        $record['user_type'],
+        $record['type'],
+        $record['amount'],
+        $record['currency']
+    );
+
+    echo($commissionCalculator->execute($operation) . "\n");
+}
