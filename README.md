@@ -1,6 +1,6 @@
-# Paysera Commission task skeleton
+# Paysera Commission task
 
-# Run
+## Run
 
 Run `cli` script in the project`s root directory:
 
@@ -14,7 +14,7 @@ or
 php cli input.csv
 ```
 
-# Tests
+## Tests
 
 Run all project tests (phpunit and php-cs-fixer):
 
@@ -28,7 +28,7 @@ Run only phpunit tests:
 composer run phpunit
 ```
 
-# Config
+## Config
 
 We use [Symfony ExpressionLanguage](https://symfony.com/doc/current/components/expression_language.html)
 to define a simple rule engine. Rules could be defined in the `config/app.php`.
