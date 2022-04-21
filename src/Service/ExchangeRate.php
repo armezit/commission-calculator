@@ -18,7 +18,7 @@ final class ExchangeRate
 
     public function fetch(): array
     {
-        $url = 'https://developers.paysera.com/tasks/api/currency-exchange-rates';
+        $url = 'https://developers.example.com/tasks/api/currency-exchange-rates';
         $curl = curl_init($url);
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

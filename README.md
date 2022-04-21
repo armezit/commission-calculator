@@ -1,4 +1,4 @@
-# Paysera Commission task
+# Commission calculator
 
 ## Run
 
